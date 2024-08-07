@@ -9,6 +9,8 @@ testing: quality_check
 
 build: testing
 	docker-compose build train-batch 
+	docker-compose --profile deployment up
 
 run: build
-	docker-compose run train-batch 
+	docker-compose stop train-batch
+

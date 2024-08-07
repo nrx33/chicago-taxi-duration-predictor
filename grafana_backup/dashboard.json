@@ -1,0 +1,346 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "frser-sqlite-datasource",
+            "uid": "bdu08prp27caoe"
+          },
+          "queryText": "SELECT\n    CASE r.status\n        WHEN 'FINISHED' THEN 'Success'\n        ELSE 'Failed'\n    END AS run_status,\n    COUNT(r.run_uuid) AS run_count\nFROM\n    runs r\nWHERE\n    r.experiment_id = 1\n    AND r.status IN ('FINISHED', 'FAILED')\nGROUP BY\n    run_status;\n",
+          "queryType": "table",
+          "rawQueryText": "SELECT\n    CASE r.status\n        WHEN 'FINISHED' THEN 'Success'\n        ELSE 'Failed'\n    END AS run_status,\n    COUNT(r.run_uuid) AS run_count\nFROM\n    runs r\nWHERE\n    r.experiment_id = 1\n    AND r.status IN ('FINISHED', 'FAILED')\nGROUP BY\n    run_status;\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Run Status",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {},
+      "description": "This bar chart displays individual performance metrics—RMSE, MAE, and R2—highlighting key evaluation criteria for quick assessment of model accuracy and fit.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "frser-sqlite-datasource",
+            "uid": "bdu08prp27caoe"
+          },
+          "queryText": "SELECT\n    r.name AS model_name,\n    AVG(CASE WHEN m.key = 'RMSE' THEN m.value END) AS RMSE,\n    AVG(CASE WHEN m.key = 'mae' THEN m.value END) AS mae,\n    AVG(CASE WHEN m.key = 'R2' THEN m.value END) AS R2\nFROM\n    metrics m\nJOIN\n    runs r ON m.run_uuid = r.run_uuid\nWHERE\n    m.key IN ('RMSE', 'mae', 'R2')\n    AND r.experiment_id = 1\nGROUP BY\n    r.name, r.run_uuid;",
+          "queryType": "table",
+          "rawQueryText": "SELECT\n    r.name AS model_name,\n    AVG(CASE WHEN m.key = 'RMSE' THEN m.value END) AS RMSE,\n    AVG(CASE WHEN m.key = 'mae' THEN m.value END) AS mae,\n    AVG(CASE WHEN m.key = 'R2' THEN m.value END) AS R2\nFROM\n    metrics m\nJOIN\n    runs r ON m.run_uuid = r.run_uuid\nWHERE\n    m.key IN ('RMSE', 'mae', 'R2')\n    AND r.experiment_id = 1\nGROUP BY\n    r.name, r.run_uuid;",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Metrics Summary",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 5,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "frser-sqlite-datasource",
+            "uid": "bdu08prp27caoe"
+          },
+          "queryText": "SELECT\n    r.start_time * 1000 AS \"time\",  -- Ensure time is in milliseconds\n    m.key AS metric_type,\n    AVG(m.value) AS metric_value,\n    r.name AS model_name \nFROM\n    runs r\nJOIN\n    metrics m ON r.run_uuid = m.run_uuid\nWHERE\n    r.experiment_id = 1  \n    AND m.key IN ('RMSE', 'mae', 'R2') \n    AND r.status = 'FINISHED'  \nGROUP BY\n    r.start_time, m.key, r.name  \nORDER BY\n    r.start_time;\n",
+          "queryType": "table",
+          "rawQueryText": "SELECT\n    r.start_time * 1000 AS \"time\",  -- Ensure time is in milliseconds\n    m.key AS metric_type,\n    AVG(m.value) AS metric_value,\n    r.name AS model_name \nFROM\n    runs r\nJOIN\n    metrics m ON r.run_uuid = m.run_uuid\nWHERE\n    r.experiment_id = 1  \n    AND m.key IN ('RMSE', 'mae', 'R2') \n    AND r.status = 'FINISHED'  \nGROUP BY\n    r.start_time, m.key, r.name  \nORDER BY\n    r.start_time;\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Model Performance",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "metric_type": {
+                "aggregations": []
+              },
+              "metric_value": {
+                "aggregations": [
+                  "mean"
+                ],
+                "operation": "aggregate"
+              },
+              "model_name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "time": {
+                "aggregations": []
+              }
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {},
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.1.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "frser-sqlite-datasource",
+            "uid": "bdu08prp27caoe"
+          },
+          "queryText": "SELECT \n    rm.name AS Model_Name,\n    mv.version AS Version,\n    datetime(mv.creation_time / 1000, 'unixepoch') AS Creation_Time,\n    datetime(mv.last_updated_time / 1000, 'unixepoch') AS Last_Updated_Time\nFROM registered_models rm\nLEFT JOIN model_versions mv ON rm.name = mv.name\nORDER BY rm.name, mv.version DESC;\n",
+          "queryType": "table",
+          "rawQueryText": "SELECT \n    rm.name AS Model_Name,\n    mv.version AS Version,\n    datetime(mv.creation_time / 1000, 'unixepoch') AS Creation_Time,\n    datetime(mv.last_updated_time / 1000, 'unixepoch') AS Last_Updated_Time\nFROM registered_models rm\nLEFT JOIN model_versions mv ON rm.name = mv.name\nORDER BY rm.name, mv.version DESC;\n",
+          "refId": "A",
+          "timeColumns": [
+            "time",
+            "ts"
+          ]
+        }
+      ],
+      "title": "Registered Models",
+      "type": "table"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2182-11-14T20:20:15.011Z",
+    "to": "2191-05-16T11:47:23.011Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Taxi_Duration_Monitoring",
+  "uid": "cdu0cc0cuyfb4a",
+  "version": 2,
+  "weekStart": ""
+}
