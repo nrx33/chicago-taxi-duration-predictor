@@ -1,0 +1,89 @@
+services:
+  localstack:
+    image: localstack/localstack-pro:latest
+    environment:
+      - LOCALSTACK_AUTH_TOKEN=ls-VeyEzOku-zItE-RavE-GIyI-1623vORO880e
+      - SERVICES=s3,kinesis,lambda,iam,logs,dynamodb,ecr,cloudwatch,kms
+      - DEBUG=1
+      - LAMBDA_EXECUTOR=docker-reuse
+      - PERSISTENCE=1
+      - HOSTNAME_EXTERNAL=localhost
+    volumes:
+      - './resources/localstack:/var/lib/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    ports:
+      - "4566:4566"   # LocalStack endpoint
+      - "4571:4571"   # Lambda endpoint
+    networks:
+      - connection
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_S3_ENDPOINT_URL=http://localstack:4566
+    volumes:
+      - './resources/mlflow:/mlflow'
+    command: >
+      mlflow server 
+      --host 0.0.0.0 
+      --port 5000
+      --backend-store-uri sqlite:///mlflow/mlflow.db 
+      --default-artifact-root s3://mlflow-bucket
+    depends_on:
+      - localstack
+    networks:
+      - connection
+
+  mage:
+    image: mageai/mageai:alpha
+    ports:
+      - "6789:6789"
+    volumes:
+      - './resources/mage:/home/src'
+    environment:
+      - MAGE_DATA_DIR=/home/src
+      - MAGE_REMOTE_KERNEL_MANAGER=False
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - MLFLOW_S3_ENDPOINT_URL=http://localstack:4566
+    command: mage start default_repo
+    depends_on:
+      - localstack
+      - mlflow
+    networks:
+      - connection
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - './resources/grafana:/var/lib/grafana'
+      - './resources/mlflow:/mlflow'  # Shared volume for MLflow access
+    depends_on:
+      - localstack
+      - mlflow
+    networks:
+      - connection
+
+  train-batch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - connection
+    environment:
+      - GIT_PYTHON_REFRESH=quiet
+    depends_on:
+      - localstack
+      - mlflow
+
+volumes:
+  grafana-storage: {}
+
+networks:
+  connection:
+    driver: bridge
