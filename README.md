@@ -130,7 +130,7 @@ After the script is executed successfully you can verify the output file in the 
     
     `pip install xgboost`
 
-##### Note: You may need to install additional packages not listed above, as system configurations vary. Check error logs and install any required packages accordingly. The code might not run correctly if your system lacks the necessary packages. Even if you've installed some of these packages locally, Mage might not recognize them, so you may need to reinstall them using Mage’s internal terminal..
+##### Note: You may need to install additional packages not listed above, as system configurations vary. Check error logs and install any required packages accordingly. The code might not run correctly if your system lacks the necessary packages. Even if you've installed some of these packages locally, Mage might not recognize them, so you may need to reinstall them using Mage’s internal terminal. And just like the previous section the data is dynamically chosen between the six datasets.
 
 ##### Import Existing Pipeline
 
