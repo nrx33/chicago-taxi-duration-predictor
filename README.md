@@ -1,4 +1,5 @@
 
+
 # Chicago Taxi Duration Prediction MLOps Project
 
 ### Description
@@ -91,6 +92,30 @@ After the script is executed successfully you can verify the output file in the 
 
 `awslocal s3 ls s3://mlflow-bucket/output --recursive`
 
+##### a successful run log should look something like this
+
+    Starting main process...
+    Setting environment variables...
+    Bucket 'mlflow-bucket' already exists.
+    Selected month: 3
+    Reading data from S3...
+    Preprocessing data...
+    Preparing features...
+    Splitting data into training and testing sets...
+    Training models...
+    Training models: 100%|████████████████████████████████████████████████████████████████████████████████| 4/4 [05:32<00:00, 83.11s/it]
+    Best model: XGBoost
+    Tuning hyperparameters for the best model: XGBoost...
+    Best parameters: {'n_estimators': 50, 'max_depth': 7, 'learning_rate': 0.2}
+    Registering the best model: XGBoost...
+    Registered model 'XGBoost' already exists. Creating a new version of this model...
+    2024/08/08 12:15:12 INFO mlflow.store.model_registry.abstract_store: Waiting up to 300 seconds for model version to finish creation. Model name: XGBoost, version 10
+    Created version '10' of model 'XGBoost'.
+    Tuned XGBoost MAE: 5.784219741284125, RMSE: 8.147295241948855, R²: 0.5810439060437554
+    Run ID of the best-tuned model: 122827ea0bad4806b655734b50e6493f
+    Saving predictions to S3...
+    Output CSV file 'Taxi_Trips_2024_03_predictions_20240808_121518.csv' has been saved to the S3 bucket.
+
 ### Running Project via Mage
 
 ##### Install Packages in Mage
@@ -160,6 +185,10 @@ After the script is executed successfully you can verify the output file in the 
 * then click on add new data source on top right
 * in the path textbox type
 `/mlflow/mlflow.db`
+
+![Grafana Connection Setup](https://github.com/nrx33/taxi_chicago_prediction_mlops/raw/main/assets/grafana_db_setup.png)
+
+
 * then click save and test
 * then if it says Data source is working then you have successfully added the data source
 
@@ -176,4 +205,3 @@ After the script is executed successfully you can verify the output file in the 
 ##### Note: You must run the project successfully at least once, either via Docker or Mage, to see relevant information on the Grafana dashboard. Additionally, ensure that the Docker Compose applications are running for Grafana to function correctly. The run status defaults to successful run in the dashboard so if there are no failed runs it will only show the successful runs until a failed run is detected.
 
 ![Grafana Dashboard](https://github.com/nrx33/taxi_chicago_prediction_mlops/raw/main/assets/grafana_dashboard.png)
-
