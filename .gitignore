@@ -163,4 +163,4 @@ cython_debug/
 
 
 # ignore list
-resources
+app/resources

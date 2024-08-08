@@ -18,14 +18,16 @@
 ### Project Setup
 run these three commands on the terminal one by one sequentially
 
-    mkdir -p ./resources/grafana \
-             ./resources/mlflow \
-             ./resources/mage \
-             ./resources/localstacklstack
+    mkdir -p ./app/resources/grafana \
+             ./app/resources/mlflow \
+             ./app/resources/mage \
+             ./app/resources/localstack
 
 `sudo chown -R 472:472 ./resources/grafana`
 
-the following command will start mage, mlflow, localstack and grafana application and it has to be launched from the project root directory or it wont work
+the following commands will start mage, mlflow, localstack and grafana application
+
+`cd app`
 
 `docker-compose up`
 
@@ -35,7 +37,7 @@ the following command will start mage, mlflow, localstack and grafana applicatio
 
 go to fetch_dataset folder 
 
-`cd fetch_dataset`
+`cd app/fetch_dataset`
 
 then run the download_data.py script via terminal
 
@@ -48,6 +50,8 @@ then run the download_data.py script via terminal
 ##### The application in the docker container will run the project from loading the data to transforming the data to training the models to finetuning the best performing model then registering the best model and finally saving the output with predictions. Since there are six datasets it is dynamically chosen in every run which one is used. The whole process uses localstack and mlflow. 
 
 in terminal run the following code 
+
+`cd app`
 
 `make run`
 
@@ -102,3 +106,5 @@ After the script is executed successfully you can verify the output file in the 
 * then a popup will come just click Run now
 
 ##### Note: You need to make sure the applications from docker-compose are running for the above instructions to work.
+
+### Monitoring with Grafana
