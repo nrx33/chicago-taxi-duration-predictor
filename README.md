@@ -1,5 +1,6 @@
 
 
+
 ### Chicago Taxi Duration Prediction MLOPS Project
 
 ### Packages to install in your local environment
@@ -113,3 +114,27 @@ After the script is executed successfully you can verify the output file in the 
 ##### Note: You need to make sure the applications from docker-compose are running for the above instructions to work.
 
 ### Monitoring with Grafana
+##### Adding Data Source
+* visit http://localhost:3000/ on your web browser
+* both username and password is "admin"
+* after initial login it will give you an option to change password, you can either change or skip it
+* Click on add new connection on left sidebar
+* search for sqlite and then click on it
+* in the sqlite page click on install on top right and wait until its installed
+* then click on add new data source on top right
+* in the path textbox type
+`/mlflow/mlflow.db`
+* Then click save and test
+* Then if it says Data source is working then you have successfully added the data source
+
+##### Importing Dashboard
+* visit http://localhost:3000/ on your web browser
+* click on dashboards in the left sidebar
+* click on create dashboard
+* in the next window click import dashboard
+* then you can either upload the dashboard.json or copy the json code from dashboard.json file and paste it on the provided textbox. You can find the dashboard.json file in the `app/grafana_backup` folder.
+* then click on load
+* in the next window click on import
+* if all is done correctly you will be redirected to the dashboard.
+
+##### Note: You need to at least run the project at least once either via docker or mage to be able to see relevant information on the grafana dashboard. Also, to make grafana work you need to also make sure the docker-compose applications are running.
