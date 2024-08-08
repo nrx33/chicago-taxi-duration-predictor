@@ -1,4 +1,5 @@
 
+
 ### Chicago Taxi Duration Prediction MLOPS Project
 
 ### Packages to install in your local environment
@@ -28,9 +29,9 @@ the following command will start mage, mlflow, localstack and grafana applicatio
 
 `docker-compose up`
 
-### Dowload Datasets
+### Download Datasets
 
-##### It will download six datasets from January 2024 to June 2024 untouched taxi data from city of Chicago, direct links from the original website are not used because the data is consolidated and is not separated by month, i manually sliced the data into specific months and uploaded to my google drive and these files are then downloaded to your system and uploaded to the localstack s3 bucket via the provided script. 
+##### You need to download the datasets before running the project or it wont work. This script will download six datasets from January 2024 to June 2024 untouched taxi data from city of Chicago, direct links from the original website are not used because the data is consolidated and is not separated by month, i manually sliced the data into specific months and uploaded to my personal google drive and these files are then downloaded to your system and uploaded to the localstack s3 bucket via the provided script. 
 
 go to fetch_dataset folder 
 
@@ -87,6 +88,12 @@ After the script is executed successfully you can verify the output file in the 
 * upload the train_batch.zip you downloaded earlier 
 
 * After it says successful import click on close
+
+##### Run the Pipeline
+
+* visit http://localhost:6789/ on your web browser
+
+* on the left sidebar in mage click on pipelines
 
 * now click on the train_batch pipeline 
 
