@@ -2,7 +2,7 @@
 # Chicago Taxi Duration Prediction MLOps Project
 
 ### Description
-This project aims to predict the ride duration of taxi rides in Chicago. Using official taxi ride data from the city of Chicago we train machine learning models and find the best model for the dataset, tune it and then final predictions are made.
+This project focuses on predicting the duration of taxi rides in Chicago. We utilize official taxi ride data from the city to train and evaluate various machine learning models. The process involves selecting the most effective model through training and fine-tuning, and then using it to generate accurate ride duration predictions. By leveraging comprehensive historical data, we aim to enhance the accuracy and reliability of our predictions.
 
 ### Technologies
 * **Storage:** Localstack S3
@@ -57,7 +57,7 @@ the following commands will start mage, mlflow, localstack and grafana applicati
 
 ### Download Datasets
 
-##### You need to download the datasets before running the project or it wont work. This script will download six datasets from January 2024 to June 2024 untouched taxi data from city of Chicago, direct links from the original website are not used because the data is consolidated and is not separated by month, i manually sliced the data into specific months and uploaded to my personal google drive and these files are then downloaded to your system and uploaded to the localstack s3 bucket via the provided script. 
+##### You must download the datasets before running the project, or it won't work. This script fetches six monthly datasets of untouched Chicago taxi data from January 2024 to June 2024. Direct links are not used because the original data is consolidated. Instead, I manually sliced the data by month, uploaded it to my Google Drive, and the script downloads these files to your system and uploads them to the Localstack S3 bucket.
 
 go to fetch_dataset folder 
 
@@ -103,7 +103,7 @@ After the script is executed successfully you can verify the output file in the 
     
     `pip install xgboost`
 
-##### Note: You might even have to install packages not listed above as the configuration for every system is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages. Even, if you already installed some of these packages in your local environment it may not be recognized inside mage so you might have to install some packages again using mage's internal terminal.
+##### Note: You may need to install additional packages not listed above, as system configurations vary. Check error logs and install any required packages accordingly. The code might not run correctly if your system lacks the necessary packages. Even if you've installed some of these packages locally, Mage might not recognize them, so you may need to reinstall them using Mage’s internal terminal..
 
 ##### Import Existing Pipeline
 
@@ -159,4 +159,4 @@ After the script is executed successfully you can verify the output file in the 
 * in the next window click on import
 * if all is done correctly you will be redirected to the dashboard.
 
-##### Note: You need to at least run the project at least once either via docker or mage to be able to see relevant information on the grafana dashboard. Also, to make grafana work you need to also make sure the docker-compose applications are running.
+##### Note: You must run the project at least once, either via Docker or Mage, to see relevant information on the Grafana dashboard. Additionally, ensure that the Docker Compose applications are running for Grafana to function correctly.
