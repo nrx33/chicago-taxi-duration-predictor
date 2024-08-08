@@ -33,7 +33,7 @@ This project focuses on predicting the duration of taxi rides in Chicago. We uti
 ##### Note: Your system may require additional packages as every environment setup is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages.
 
 ### Project Setup
-run these two terminal commands sequentially, it has to run before running the docker-compose applications for the first time.
+Run these two terminal commands sequentially, it has to be executed before running the docker-compose applications for the first time.
 
     mkdir -p ./app/resources/grafana \
              ./app/resources/mlflow \
