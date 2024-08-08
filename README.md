@@ -107,7 +107,7 @@ After the script is executed successfully you can verify the output file in the 
 
 ##### Import Existing Pipeline
 
-* download or copy the train_batch.zip from mage_backup folder to your host machine
+* download or copy the `train_batch.zip` from `app/mage_backup` folder to your host machine
 
 * visit http://localhost:6789/ on your web browser
 
