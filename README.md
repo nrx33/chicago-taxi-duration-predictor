@@ -16,7 +16,7 @@ This project focuses on predicting the duration of taxi rides in Chicago. We uti
 
 # Instructions to run code
 
-##### Note: All `cd` terminal commands assume you are in the project root directory. To access the MLflow UI, visit http://localhost:3000/ in your web browser after the Docker Compose applications are running. 
+##### Note: All `cd` terminal commands assume you are in the project root directory. To access the MLflow UI, visit http://localhost:5000/ in your web browser after the Docker Compose applications are running. 
 
 ### Packages to install in your local environment
 
