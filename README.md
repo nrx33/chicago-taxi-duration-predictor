@@ -17,7 +17,7 @@ This project focuses on predicting the duration of taxi rides in Chicago. We uti
 
 # Instructions to run code
 
-##### Attenion: All `cd` terminal commands assume you are in the project root directory. Also, make sure your ports are forwarded correctly or the web interface for the docker apps wont be accessible. For, ideal testing conditions it is suggested to run this repo in a github codespace with at least 4 cores of compute power.
+##### Attention: All `cd` terminal commands assume that you are in the project root directory. Additionally, ensure that your ports are correctly forwarded, as they may not always be automatically forwarded, which can result in the web interfaces of one or more Docker applications being inaccessible. For optimal testing conditions, it is recommended to run this repository in a GitHub Codespace with at least 4 cores of compute power.
 
 
 ### Packages to install in your local environment
