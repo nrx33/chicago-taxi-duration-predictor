@@ -2,14 +2,15 @@
 ### Chicago Taxi Duration Prediction MLOPS Project
 
 ### Packages to install in your local environment
-`pip install boto3`
-`pip install gdown`
-`pip install awscli`
-`pip install awscli-local`
-`pip install localstack`
-`pip install isort`
-`pip install mlflow`
-`pip install xgboost`
+
+    pip install boto3
+    pip install gdown
+    pip install awscli
+    pip install awscli-local
+    pip install localstack
+    pip install isort
+    pip install mlflow
+    pip install xgboost
 
 ##### Note: Your system may require additional packages as every environment setup is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages.
 
@@ -59,12 +60,15 @@ After the script is executed successfully you can verify the output file in the 
 
 ##### Install Packages in Mage
 
+* visit http://localhost:6789/ on your web browser
+
 * in the mage homepage click command center located in top-center position
 
 * open terminal from there and install the following packages
 
-`pip install mlflow`
-`pip install xgboost`
+    `pip install mlflow`
+    
+    `pip install xgboost`
 
 ##### Note: You might even have to install packages not listed above as the configuration for every system is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages. Even, if you already installed some of these packages in your local environment it may not be recognized inside mage so you might have to install some packages again for mage using's mage internal terminal.
 
