@@ -81,7 +81,7 @@ After the script is executed successfully you can verify the output file in the 
     
     `pip install xgboost`
 
-##### Note: You might even have to install packages not listed above as the configuration for every system is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages. Even, if you already installed some of these packages in your local environment it may not be recognized inside mage so you might have to install some packages again for mage using's mage internal terminal.
+##### Note: You might even have to install packages not listed above as the configuration for every system is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages. Even, if you already installed some of these packages in your local environment it may not be recognized inside mage so you might have to install some packages again using mage's internal terminal.
 
 ##### Import Existing Pipeline
 
