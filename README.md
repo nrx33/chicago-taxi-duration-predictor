@@ -16,7 +16,8 @@ This project focuses on predicting the duration of taxi rides in Chicago. We uti
 
 # Instructions to run code
 
-##### Note: All `cd` terminal commands assume you are in the project root directory. To access the MLflow UI, visit http://localhost:5000/ in your web browser after the Docker Compose applications are running. 
+##### Attenion: All `cd` terminal commands assume you are in the project root directory. Also, make sure your ports are forwarded correctly or the web interface for the docker apps wont be accessible. For, ideal testing conditions it is suggested to run this repo in a github codespace with at least 4 cores of compute power.
+
 
 ### Packages to install in your local environment
 
@@ -28,6 +29,7 @@ This project focuses on predicting the duration of taxi rides in Chicago. We uti
     pip install black
     pip install isort
     pip install mlflow
+    pip install xgboost
     
 
 ##### Note: Your system may require additional packages as every environment setup is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages.
@@ -97,7 +99,7 @@ After the script is executed successfully you can verify the output file in the 
 
 * in the mage homepage click command center located in top-center position
 
-* open terminal from there and install the following packages
+* search and open terminal from there and install the following packages
 
     `pip install mlflow`
     
@@ -107,7 +109,7 @@ After the script is executed successfully you can verify the output file in the 
 
 ##### Import Existing Pipeline
 
-* download or copy the `train_batch.zip` from `app/mage_backup` folder to your host machine
+* download or copy the train_batch.zip from `app/mage_backup` folder to your host machine
 
 * visit http://localhost:6789/ on your web browser
 
@@ -119,7 +121,7 @@ After the script is executed successfully you can verify the output file in the 
 
 * upload the train_batch.zip you downloaded earlier 
 
-* After it says successful import click on close
+* after it says successful import click on close
 
 ##### Run the Pipeline
 
@@ -135,6 +137,18 @@ After the script is executed successfully you can verify the output file in the 
 
 ##### Note: You need to make sure the applications from docker-compose are running for the above instructions to work.
 
+![Mage Trigger Run](https://github.com/nrx33/taxi_chicago_prediction_mlops/raw/main/assets/mage_trigger_runs.png)
+
+### Experiment tracking and model registry using mlflow
+
+#####  To access the MLflow UI, visit http://localhost:5000/ in your web browser.
+
+![MLflow Experiment](https://github.com/nrx33/taxi_chicago_prediction_mlops/raw/main/assets/mlflow_experiment.png)
+
+##### Note: You need to make sure the applications from docker-compose are running for mlflow to work.
+
+![MLflow Model Registry](https://github.com/nrx33/taxi_chicago_prediction_mlops/raw/main/assets/mlflow_model_registry.png)
+
 ### Monitoring using Grafana
 ##### Adding Data Source
 * visit http://localhost:3000/ on your web browser
@@ -146,17 +160,20 @@ After the script is executed successfully you can verify the output file in the 
 * then click on add new data source on top right
 * in the path textbox type
 `/mlflow/mlflow.db`
-* Then click save and test
-* Then if it says Data source is working then you have successfully added the data source
+* then click save and test
+* then if it says Data source is working then you have successfully added the data source
 
 ##### Importing Dashboard
 * visit http://localhost:3000/ on your web browser
 * click on dashboards in the left sidebar
 * click on create dashboard
-* in the next window click import dashboard
+* in the next window click import a dashboard
 * then you can either upload the dashboard.json or copy the json code from dashboard.json file and paste it on the provided textbox. You can find the dashboard.json file in the `app/grafana_backup` folder.
-* then click on load
+* then click on load only if you copied the code and pasted in the textbox, if you uploaded the file instead you can skip this part
 * in the next window click on import
 * if all is done correctly you will be redirected to the dashboard.
 
-##### Note: You must run the project at least once, either via Docker or Mage, to see relevant information on the Grafana dashboard. Additionally, ensure that the Docker Compose applications are running for Grafana to function correctly.
+##### Note: You must run the project successfully at least once, either via Docker or Mage, to see relevant information on the Grafana dashboard. Additionally, ensure that the Docker Compose applications are running for Grafana to function correctly. The run status defaults to successful run in the dashboard so if there are no failed runs it will only show the successful runs until a failed run is detected.
+
+![Grafana Dashboard](https://github.com/nrx33/taxi_chicago_prediction_mlops/raw/main/assets/grafana_dashboard.png)
+
