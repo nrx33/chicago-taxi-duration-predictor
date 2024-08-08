@@ -1,8 +1,20 @@
+# Chicago Taxi Duration Prediction MLOps Project
 
+### Description
+This project aims to predict the ride duration of taxi rides in Chicago. Using official taxi ride data from the city of Chicago we train machine learning models and find the best model for the dataset, tune it and then final predictions are made.
 
+### Technologies
+**Storage:** Localstack S3
 
+**Experiment Tracking & Model Registry:** mlflow
 
-### Chicago Taxi Duration Prediction MLOPS Project
+**Workflow Orchestration**: Mage
+
+**Monitoring**: Grafana
+
+**Containerization**: Docker
+
+# Instructions to run code
 
 ### Packages to install in your local environment
 
