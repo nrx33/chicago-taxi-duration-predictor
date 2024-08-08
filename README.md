@@ -75,7 +75,7 @@ After the script is executed successfully you can verify the dataset files in th
 
 ### Running Project via Docker Container
 
-##### The application in the docker container will run the project from loading the data to transforming the data to training the models to finetuning the best performing model then registering the best model and finally saving the output with predictions. Since there are six datasets it is dynamically chosen in every run which one is used. The whole process uses localstack and mlflow. 
+##### The Docker container runs the entire project workflow, from data loading and transformation to model training, fine-tuning, and registration. It also saves the final predictions. The process dynamically selects one of six datasets per run and utilizes Localstack and MLflow.
 
 in terminal run the following code 
 
@@ -135,7 +135,7 @@ After the script is executed successfully you can verify the output file in the 
 
 ##### Note: You need to make sure the applications from docker-compose are running for the above instructions to work.
 
-### Monitoring with Grafana
+### Monitoring using Grafana
 ##### Adding Data Source
 * visit http://localhost:3000/ on your web browser
 * both username and password is "admin"
