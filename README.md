@@ -28,7 +28,7 @@ This project focuses on predicting the duration of taxi rides in Chicago. We uti
     pip install black
     pip install isort
     pip install mlflow
-    pip install xgboost
+    
 
 ##### Note: Your system may require additional packages as every environment setup is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages.
 
