@@ -57,7 +57,7 @@ the following commands will start mage, mlflow, localstack and grafana applicati
 
 ### Download Datasets
 
-##### You must download the datasets before running the project, or it won't work. This script fetches six monthly datasets of untouched Chicago taxi data from January 2024 to June 2024. Direct links are not used because the original data is consolidated. Instead, I manually sliced the data by month, uploaded it to my Google Drive, and the script downloads these files to your system and uploads them to the Localstack S3 bucket.
+##### Note: You must download the datasets before running the project, or it won't work. This script fetches six monthly datasets of untouched Chicago taxi data from January 2024 to June 2024. Direct links are not used because the original data is consolidated. Instead, I manually sliced the data by month, uploaded it to my Google Drive, and the script downloads these files to your system and uploads them to the Localstack S3 bucket.
 
 go to fetch_dataset folder 
 
