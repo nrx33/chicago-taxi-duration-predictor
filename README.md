@@ -1,6 +1,7 @@
 
 
 
+
 ### Chicago Taxi Duration Prediction MLOPS Project
 
 ### Packages to install in your local environment
@@ -25,7 +26,12 @@ run these three commands on the terminal one by one sequentially
              ./app/resources/mage \
              ./app/resources/localstack
 
-`sudo chown -R 472:472 ./app/resources/grafana`
+    sudo bash -c "
+      chown -R 472:472 ./app/resources/grafana && \
+      chown -R 472:472 ./app/resources/mlflow && \
+      chown -R 472:472 ./app/resources/mage && \
+      chown -R 472:472 ./app/resources/localstack
+    "
 
 the following commands will start mage, mlflow, localstack and grafana application
 
