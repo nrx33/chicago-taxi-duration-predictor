@@ -16,6 +16,8 @@ This project aims to predict the ride duration of taxi rides in Chicago. Using o
 
 # Instructions to run code
 
+##### Note: All `cd` command assumes you are at the project root directory.
+
 ### Packages to install in your local environment
 
     pip install boto3
@@ -45,7 +47,9 @@ run these two terminal commands sequentially
       chown -R 472:472 ./app/resources/localstack
     "
 
-the following commands will start mage, mlflow, localstack and grafana application
+### Run Docker Compose
+
+the following commands will start mage, mlflow, localstack and grafana application which is essential to run this project
 
 `cd app`
 
