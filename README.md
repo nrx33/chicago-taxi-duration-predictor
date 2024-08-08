@@ -19,7 +19,7 @@
 ##### Note: Your system may require additional packages as every environment setup is different, so read error logs and install those packages as per requirement. The code wont run properly if your system doesn't have the required packages.
 
 ### Project Setup
-run these three commands on the terminal one by one sequentially
+run these two terminal commands sequentially
 
     mkdir -p ./app/resources/grafana \
              ./app/resources/mlflow \
