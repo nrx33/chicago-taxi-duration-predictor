@@ -9,6 +9,7 @@
     pip install awscli
     pip install awscli-local
     pip install localstack
+    pip install black
     pip install isort
     pip install mlflow
     pip install xgboost
@@ -23,7 +24,7 @@ run these three commands on the terminal one by one sequentially
              ./app/resources/mage \
              ./app/resources/localstack
 
-`sudo chown -R 472:472 ./resources/grafana`
+`sudo chown -R 472:472 ./app/resources/grafana`
 
 the following commands will start mage, mlflow, localstack and grafana application
 
@@ -44,6 +45,10 @@ then run the download_data.py script via terminal
 `python download_data.py `
 
 ##### Note: You need to make sure the applications from docker-compose are running before running the above terminal command.
+
+After the script is executed successfully you can verify the dataset files in the s3 bucket using the following terminal command
+
+`awslocal s3 ls s3://mlflow-bucket/dataset --recursive`
 
 ### Running Project via Docker Container
 
