@@ -17,6 +17,15 @@ This project focuses on predicting the duration of taxi rides in Chicago. We uti
 
 # Instructions to run code
 
+### Video Instructions
+- [Project Setup](https://www.loom.com/share/5977758cffcc4f9c87c0621718660a3d?sid=1677747c-a03b-40b1-8623-ae8637b67771)
+- [Running Application via Docker](https://www.loom.com/share/30b3e4b8879b452eb23487ca62ef67f9?sid=b67644a5-df47-46b2-b72a-1dcd7aad091f)
+- [Running Application via Mage](https://www.loom.com/share/f717380f960f41a39dabaa2a6e7d4e74?sid=41d099cd-96e3-44af-911e-829c4d045037)
+- [Monitoring Setup](https://www.loom.com/share/e1f2e6f3f20b4b25b5a36f4d1b125411?sid=4729a797-dfab-4183-b023-e0d13ea601fa)
+  
+
+### Text Instructions
+
 ##### Attention: All `cd` terminal commands assume that you are in the project root directory. Additionally, ensure that your ports are correctly forwarded, as they may not always be automatically forwarded, which can result in the web interfaces of one or more Docker applications being inaccessible. For optimal testing conditions, it is recommended to run this repository in a GitHub Codespace with at least 4 cores of compute power.
 
 
